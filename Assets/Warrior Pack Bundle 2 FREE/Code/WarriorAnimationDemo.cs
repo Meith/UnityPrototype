@@ -86,7 +86,6 @@ public class WarriorAnimationDemo : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1" + joyStickKeyFlag))
 		{
-            Debug.Log("Fire1" + joyStickKeyFlag);
 			animator.SetTrigger("Attack1Trigger");
 			if (warrior == Warrior.Brute)
 				StartCoroutine (COStunPause(1.2f));
