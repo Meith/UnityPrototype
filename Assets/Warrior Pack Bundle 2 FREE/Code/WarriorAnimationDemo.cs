@@ -13,14 +13,56 @@ public class WarriorAnimationDemo : MonoBehaviour {
 	
 	//Warrior types
 	public enum Warrior{Karate, Ninja, Brute, Sorceress, Knight, Mage, Archer, TwoHanded};
-
 	public Warrior warrior;
+
+    string[] joyStickNum = { "0", "1", "2", "3" };
+    public string joyStickKeyFlag;
 	
 	void Update()
 	{
+        float x = -1.0f;
+        float z = -1.0f;
+
+        switch(warrior)
+        {
+            case Warrior.Karate:
+                break;
+
+            case Warrior.Ninja:
+                break;
+
+            case Warrior.Brute:
+                break;
+
+            case Warrior.Sorceress:
+                break;
+
+            case Warrior.Knight:
+                x = Input.GetAxisRaw("Horizontal" + joyStickNum[0]);
+                z = Input.GetAxisRaw("Vertical" + joyStickNum[0]);
+                joyStickKeyFlag = joyStickNum[0];
+                break;
+
+            case Warrior.Mage:
+                x = Input.GetAxisRaw("Horizontal" + joyStickNum[1]);
+                z = Input.GetAxisRaw("Vertical" + joyStickNum[1]);
+                joyStickKeyFlag = joyStickNum[1];
+                break;
+
+            case Warrior.Archer:
+                x = Input.GetAxisRaw("Horizontal" + joyStickNum[2]);
+                z = Input.GetAxisRaw("Vertical" + joyStickNum[2]);
+                joyStickKeyFlag = joyStickNum[2];
+                break;
+
+            case Warrior.TwoHanded:
+                x = Input.GetAxisRaw("Horizontal" + joyStickNum[3]);
+                z = Input.GetAxisRaw("Vertical" + joyStickNum[3]);
+                joyStickKeyFlag = joyStickNum[3];
+                break;
+        }
+
 		//Get input from controls
-		float x = Input.GetAxisRaw("HorizontalP1");
-		float z = Input.GetAxisRaw("VerticalP1");
 		inputVec = new Vector3(x, 0, z);
 
 		//Apply inputs to animator
@@ -42,8 +84,9 @@ public class WarriorAnimationDemo : MonoBehaviour {
 			isMoving = false;
 		}
 
-		if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1" + joyStickKeyFlag))
 		{
+            Debug.Log("Fire1" + joyStickKeyFlag);
 			animator.SetTrigger("Attack1Trigger");
 			if (warrior == Warrior.Brute)
 				StartCoroutine (COStunPause(1.2f));
