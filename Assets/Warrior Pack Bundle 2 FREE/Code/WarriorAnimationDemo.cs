@@ -19,13 +19,13 @@ public class WarriorAnimationDemo : MonoBehaviour {
 	void Update()
 	{
 		//Get input from controls
-		float z = Input.GetAxisRaw("Horizontal");
-		float x = -(Input.GetAxisRaw("Vertical"));
+		float x = Input.GetAxisRaw("HorizontalP1");
+		float z = Input.GetAxisRaw("VerticalP1");
 		inputVec = new Vector3(x, 0, z);
 
 		//Apply inputs to animator
-		animator.SetFloat("Input X", z);
-		animator.SetFloat("Input Z", -(x));
+		animator.SetFloat("Input X", x);
+		animator.SetFloat("Input Z", z);
 
 		if (x != 0 || z != 0 )  //if there is some input
 		{
