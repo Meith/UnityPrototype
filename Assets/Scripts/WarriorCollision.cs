@@ -25,7 +25,7 @@ public class WarriorCollision : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject.tag == "Player")
+		if((other.gameObject.tag == "Player" || other.gameObject.tag == "Sword") && !other.transform.IsChildOf(transform))
 		{
 			Debug.Log("I got hit");
 			collided = true;
