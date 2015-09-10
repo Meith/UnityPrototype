@@ -6,6 +6,7 @@ public class WarriorCollision : MonoBehaviour {
 	private bool collided;
 	private float hitDisplacement = 5000.0f;
 	private Rigidbody rb;
+    private Transform attack;
 
 	// Use this for initialization
 	void Start () 
@@ -18,7 +19,7 @@ public class WarriorCollision : MonoBehaviour {
 	{
 		if(collided)
 		{
-			rb.AddForce(-transform.forward * hitDisplacement);
+			rb.AddForce(attack.forward * hitDisplacement);
 			collided = false;
 		}
 	}
@@ -27,8 +28,8 @@ public class WarriorCollision : MonoBehaviour {
 	{
 		if((other.gameObject.tag == "Player" || other.gameObject.tag == "Sword") && !other.transform.IsChildOf(transform))
 		{
-			Debug.Log("I got hit");
 			collided = true;
+            attack = other.gameObject.transform;
 		}
 	}
 }

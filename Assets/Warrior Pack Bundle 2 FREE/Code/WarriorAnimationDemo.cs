@@ -44,9 +44,9 @@ public class WarriorAnimationDemo : MonoBehaviour {
                 break;
 
             case Warrior.Mage:
-                x = Input.GetAxisRaw("Horizontal" + joyStickNum[1]);
-                z = Input.GetAxisRaw("Vertical" + joyStickNum[1]);
-                joyStickKeyFlag = joyStickNum[1];
+                x = Input.GetAxisRaw("Horizontal" + joyStickNum[3]);
+                z = Input.GetAxisRaw("Vertical" + joyStickNum[3]);
+                joyStickKeyFlag = joyStickNum[3];
                 break;
 
             case Warrior.Archer:
@@ -56,9 +56,9 @@ public class WarriorAnimationDemo : MonoBehaviour {
                 break;
 
             case Warrior.TwoHanded:
-                x = Input.GetAxisRaw("Horizontal" + joyStickNum[3]);
-                z = Input.GetAxisRaw("Vertical" + joyStickNum[3]);
-                joyStickKeyFlag = joyStickNum[3];
+                x = Input.GetAxisRaw("Horizontal" + joyStickNum[1]);
+                z = Input.GetAxisRaw("Vertical" + joyStickNum[1]);
+                joyStickKeyFlag = joyStickNum[1];
                 break;
         }
 
@@ -94,6 +94,11 @@ public class WarriorAnimationDemo : MonoBehaviour {
 			else
 				StartCoroutine (COStunPause(.6f));
 		}
+
+        if(Input.GetButtonDown("Jump"))
+        {
+
+        }
 
 		UpdateMovement();  //update character position and facing
 	}
